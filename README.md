@@ -83,11 +83,16 @@ bash .screenshot-kit/capture.sh          # writes ./screenshots/*.png
 cd /path/to/climblog-web
 cp /path/to/climblog/screenshots/02-logbook.png       src/assets/shots/
 cp /path/to/climblog/screenshots/03-route-detail.png  src/assets/shots/
+cp /path/to/climblog/screenshots/05-quick-log.png     src/assets/shots/
 cp /path/to/climblog/screenshots/06-lab-volume.png    src/assets/shots/
 cp /path/to/climblog/screenshots/07-lab-efficiency.png src/assets/shots/
 cp /path/to/climblog/screenshots/08-community.png     src/assets/shots/
 cp /path/to/climblog/screenshots/10-lab-overview.png  src/assets/shots/
 ```
+
+`capture.sh` signs in first, because several screens gate their content on a
+session — the Quick Log grade chips in particular. See `screenshots/PLAN.md` in
+the app repo for the traps involved.
 
 Images are imported from `src/data/site.ts`, which lets Astro emit responsive
 WebP variants. The source PNGs are ~2.8 MB each; the built WebP versions are
@@ -100,8 +105,8 @@ back to a sage-green SVG placeholder, which is easy to spot when reviewing.
 
 ### Known gaps in the current screenshot set
 
-- **Not yet captured:** the sign-in screen, the Quick Log sheet, and Profile.
-  Add them here once captured, with `alt` text and a caption.
+- **Not yet captured:** the sign-in screen and Profile. Add them once captured,
+  with `alt` text and a caption.
 - **Sketch Beta is not in the gallery.** The screen works, but its drawing
   toolbar is rendered by Skia with no accessibility nodes or OCR text, so the
   capture could not be verified programmatically. The landing copy still

@@ -53,12 +53,18 @@ export const features = [
  */
 import shotLogbook from '../assets/shots/02-logbook.png';
 import shotRouteDetail from '../assets/shots/03-route-detail.png';
+import shotQuickLog from '../assets/shots/05-quick-log.png';
 import shotLabVolume from '../assets/shots/06-lab-volume.png';
 import shotLabEfficiency from '../assets/shots/07-lab-efficiency.png';
 import shotLabOverview from '../assets/shots/10-lab-overview.png';
 import shotCommunity from '../assets/shots/08-community.png';
 
 export const screens = [
+  {
+    src: shotQuickLog,
+    alt: 'Quick Log sheet with a route name, grade chips, hold colour swatches and flash, onsight, send or fell outcomes.',
+    caption: 'Seconds per climb, mid-session',
+  },
   {
     src: shotLogbook,
     alt: 'VertX logbook showing active climbing routes as photo cards with grade badges.',
