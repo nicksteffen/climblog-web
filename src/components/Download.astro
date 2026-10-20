@@ -1,0 +1,129 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="section" id="download">
+  <div class="wrap">
+    <div class="card cta">
+      <p class="eyebrow">Beta</p>
+      <h2>
+        {site.downloadReady
+          ? 'Try the beta.'
+          : 'The beta is on the way.'}
+      </h2>
+
+      {site.downloadReady ? (
+        <>
+          <p class="lede cta__lede">
+            Builds are distributed through Expo. Open the link on the device you
+            want to test with — it will walk you through the install.
+          </p>
+          <div class="cta__actions">
+            <a class="btn btn--primary" href={site.downloadUrl}>
+              {site.downloadLabel}
+            </a>
+          </div>
+        </>
+      ) : (
+        <>
+          <p class="lede cta__lede">
+            We are still putting the finishing touches on the first build. Leave
+            your email and we will send you the link as soon as it is ready.
+          </p>
+
+          <form
+            class="cta__form"
+            method="post"
+            action={`mailto:${site.contactEmail}`}
+            enctype="text/plain"
+          >
+            <label class="sr-only" for="email">Email address</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+            <button class="btn btn--primary" type="submit">Notify me</button>
+          </form>
+          <p class="cta__note">
+            Or email <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+          </p>
+        </>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: 56px 40px;
+    text-align: center;
+    border-color: var(--border-pink);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-top: 14px;
+  }
+
+  .cta__lede {
+    margin: 18px auto 0;
+    text-align: center;
+  }
+
+  .cta__actions,
+  .cta__form {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .cta__form input {
+    flex: 1 1 260px;
+    max-width: 320px;
+    padding: 14px 18px;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    outline: none;
+  }
+
+  .cta__form input::placeholder {
+    color: var(--slate-500);
+  }
+
+  .cta__form input:focus-visible {
+    border-color: var(--punch-pink);
+    box-shadow: 0 0 0 3px rgba(255, 46, 140, 0.22);
+  }
+
+  .cta__note {
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .cta__note a {
+    color: var(--cyan-accent);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import { site, nav } from '../data/site';
+import appIcon from '../assets/brand/app-icon.png';
+---
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="/">
+      <img src={appIcon.src} width="34" height="34" alt="" />
+      <span>{site.name}</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+
+    <a class="btn btn--primary nav__cta" href="#download">
+      {site.downloadReady ? 'Get the beta' : 'Get notified'}
+    </a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11, 17, 32, 0.72);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 68px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .brand img {
+    border-radius: 8px;
+  }
+
+  .nav__links {
+    display: none;
+    gap: 28px;
+    margin-left: auto;
+    font-size: 0.94rem;
+  }
+
+  .nav__links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+
+  .nav__links a:hover {
+    color: var(--text);
+  }
+
+  .nav__cta {
+    margin-left: auto;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  @media (min-width: 720px) {
+    .nav__links {
+      display: flex;
+    }
+    .nav__cta {
+      margin-left: 0;
+    }
+  }
+</style>

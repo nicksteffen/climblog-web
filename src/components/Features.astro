@@ -1,0 +1,77 @@
+---
+import { features } from '../data/site';
+---
+
+<section class="section" id="features">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>A three-step loop that fits a session.</h2>
+    <p class="lede" style="margin-top:16px">
+      No spreadsheets, no screenshots in your camera roll. Log it, draw it, then
+      let the numbers tell you where you are actually improving.
+    </p>
+
+    <ol class="steps">
+      {features.map((f, i) => (
+        <li class="card step">
+          <span class="step__num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="step__icon" aria-hidden="true">{f.icon}</span>
+          <h3>{f.title}</h3>
+          <p>{f.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-top: 14px;
+  }
+
+  .steps {
+    list-style: none;
+    margin: 48px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 22px;
+  }
+
+  .step {
+    position: relative;
+    padding: 30px 28px;
+  }
+
+  .step__num {
+    position: absolute;
+    top: 22px;
+    right: 26px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .step__icon {
+    display: block;
+    font-size: 1.7rem;
+    margin-bottom: 16px;
+  }
+
+  .step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+  }
+
+  @media (min-width: 860px) {
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

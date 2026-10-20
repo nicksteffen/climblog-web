@@ -1,0 +1,80 @@
+---
+import { screens } from '../data/site';
+import { Image } from 'astro:assets';
+
+// Screens are stills of a 402x874pt device. Render them with explicit
+// dimensions in a fixed-aspect frame so there is no layout shift on load.
+---
+
+<section class="section" id="screens">
+  <div class="wrap">
+    <p class="eyebrow">Screens</p>
+    <h2>Built for the wall, not the spreadsheet.</h2>
+    <p class="lede" style="margin-top:16px">
+      Every screen renders from your device, so the logbook works in a basement
+      gym with no signal.
+    </p>
+
+    <ul class="shots">
+      {screens.map((s) => (
+        <li class="shot card">
+          <div class="shot__frame">
+            <Image
+              src={s.src}
+              alt={s.alt}
+              widths={[300, 600]}
+              sizes="(min-width: 900px) 300px, 60vw"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <p class="shot__caption">{s.caption}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-top: 14px;
+  }
+
+  .shots {
+    list-style: none;
+    margin: 48px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .shot {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shot__frame {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border);
+  }
+
+  /* Device aspect ratio: 402 x 874 */
+  .shot__frame :global(img) {
+    width: 100%;
+    aspect-ratio: 402 / 874;
+    object-fit: cover;
+  }
+
+  .shot__caption {
+    margin-top: 14px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-align: center;
+  }
+</style>

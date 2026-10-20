@@ -1,0 +1,41 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__brand">
+      <strong>{site.name}</strong> — {site.tagline}
+    </p>
+    <p class="footer__meta">
+      © {new Date().getFullYear()} {site.name}.
+      <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-block: 40px;
+    margin-top: 40px;
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__brand,
+  .footer__meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .footer__meta a {
+    color: var(--cyan-accent);
+  }
+</style>
