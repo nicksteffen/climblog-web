@@ -1,14 +1,14 @@
 ---
-import { features } from '../data/site';
+import { features, moreFeatures } from '../data/site';
 ---
 
 <section class="section" id="features">
   <div class="wrap">
     <p class="eyebrow">How it works</p>
-    <h2>A three-step loop that fits a session.</h2>
+    <h2>Log fast. Understand it later.</h2>
     <p class="lede" style="margin-top:16px">
-      No spreadsheets, no screenshots in your camera roll. Log it, draw it, then
-      let the numbers tell you where you are actually improving.
+      Mid-session you want to be climbing, not typing. Get each climb down in
+      seconds, then let the numbers show you what the session actually was.
     </p>
 
     <ol class="steps">
@@ -21,6 +21,19 @@ import { features } from '../data/site';
         </li>
       ))}
     </ol>
+
+    <p class="more__heading">Also included</p>
+    <ul class="more">
+      {moreFeatures.map((f) => (
+        <li class="more__item">
+          <span class="more__icon" aria-hidden="true">{f.icon}</span>
+          <div>
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
 
@@ -67,6 +80,55 @@ import { features } from '../data/site';
   .step p {
     color: var(--text-muted);
     font-size: 0.97rem;
+  }
+
+  /* Secondary capabilities — deliberately quieter than the main loop, so the
+     page does not over-promise where the real value is. */
+  .more__heading {
+    margin-top: 56px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .more {
+    list-style: none;
+    margin: 20px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 18px;
+  }
+
+  .more__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .more__icon {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    flex-shrink: 0;
+  }
+
+  .more__item h3 {
+    font-size: 0.97rem;
+    margin-bottom: 3px;
+  }
+
+  .more__item p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  @media (min-width: 700px) {
+    .more {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 32px;
+    }
   }
 
   @media (min-width: 860px) {

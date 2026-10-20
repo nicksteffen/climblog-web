@@ -8,9 +8,9 @@
 
 export const site = {
   name: 'VertX',
-  tagline: 'Session Tracking and Analytics for Climbers.',
+  tagline: 'Session tracking for climbers.',
   description:
-    'Log every climb, sketch the beta straight onto your wall photo, and watch your grade volume grow. Local-first session tracking and training analytics for bouldering.',
+    'Log a whole session in seconds, then see exactly what you climbed and how much. Quick logs for warm-ups and flashes, a dedicated logbook entry for the project you keep coming back to. Local-first bouldering tracking and analytics.',
   /** Placeholder — replace with your real EAS internal-distribution link. */
   downloadUrl: 'https://expo.dev/accounts/REPLACE_ME/projects/climblog/builds',
   downloadLabel: 'Download the beta',
@@ -25,22 +25,22 @@ export const nav = [
   { href: '#download', label: 'Download' },
 ] as const;
 
-/** The three-step loop that the app is built around. */
+/** The core loop: log fast during the session, understand it afterwards. */
 export const features = [
   {
-    icon: '📸',
-    title: 'Log a climb',
-    body: 'Shoot the wall problem, or skip the photo entirely. Set the grade and the hold colour, and it is in your logbook in seconds.',
+    icon: '⚡',
+    title: 'Quick log the warm-ups',
+    body: 'Warm-up and flash it in seconds. Grade, hold colour, and how it went — straight into the logbook, without using one of your three project slots.',
   },
   {
-    icon: '✍️',
-    title: 'Sketch the beta',
-    body: 'Draw straight onto your own route photo. Eight colours, brush and ellipse, undo and clear — map the sequence before you forget it.',
+    icon: '🎯',
+    title: 'Work your projects',
+    body: 'Give the problem that keeps beating you a name and a photo. Log every attempt, note the beta, and watch a route go from falling to sent.',
   },
   {
     icon: '📈',
-    title: 'Track and analyse',
-    body: 'Log each attempt as flash, onsight, send or fell. The Rock Garden turns them into grade-volume charts, send efficiency, height climbed and daily breakdowns.',
+    title: 'See the whole session',
+    body: 'Grade volume, send efficiency, total height climbed, daily breakdowns. Everything you logged, turned into what you actually did today.',
   },
 ] as const;
 
@@ -62,12 +62,12 @@ export const screens = [
   {
     src: shotLogbook,
     alt: 'VertX logbook showing active climbing routes as photo cards with grade badges.',
-    caption: 'Every project, one logbook',
+    caption: 'Everything you climbed today',
   },
   {
     src: shotRouteDetail,
-    alt: 'Route detail screen with grade, height, rating, notes and attempt controls.',
-    caption: 'The full story of a route',
+    alt: 'Route detail screen showing a project with its grade, height, notes and every logged attempt.',
+    caption: 'Every attempt on your project',
   },
   {
     src: shotLabVolume,
@@ -93,6 +93,34 @@ export const screens = [
 
 export const highlights = [
   { value: 'Local-first', label: 'Works with no signal, at any gym' },
-  { value: 'iOS & Android', label: 'One logbook across your devices' },
+  { value: 'Two ways to log', label: 'Quick entries and full projects' },
   { value: 'Grade analytics', label: 'Volume, efficiency and streaks' },
+] as const;
+
+/**
+ * Smaller capabilities, shown as a compact strip below the main loop. Sketching
+ * lives here deliberately: it is a genuinely useful extra, but the thing people
+ * actually reach for mid-session is fast logging.
+ */
+export const moreFeatures = [
+  {
+    icon: '📸',
+    title: 'Photo your projects',
+    body: 'Snap the problem so you recognise it next session.',
+  },
+  {
+    icon: '✍️',
+    title: 'Sketch the beta',
+    body: 'Draw the sequence onto your photo when a problem needs planning.',
+  },
+  {
+    icon: '🏆',
+    title: 'Flash and onsight',
+    body: 'Track how you sent it, not just whether you did.',
+  },
+  {
+    icon: '📶',
+    title: 'Works offline',
+    body: 'Basement gyms and no signal are not a problem.',
+  },
 ] as const;
