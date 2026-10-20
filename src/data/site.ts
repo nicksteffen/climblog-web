@@ -16,7 +16,6 @@ export const site = {
   downloadLabel: 'Download the beta',
   /** Set to true once downloadUrl points at a real build; false renders "Coming soon". */
   downloadReady: false,
-  contactEmail: 'hello@vertx.app',
 } as const;
 
 export const nav = [
