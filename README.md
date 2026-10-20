@@ -17,14 +17,32 @@ npm run preview  # serve the built output
 
 ## Deploy to Vercel
 
-1. Push this repo to GitHub.
-2. In Vercel: **New Project → Import** this repo.
-3. Framework preset **Astro** is detected automatically; leave the defaults
-   (`npm run build` → `dist`). `vercel.json` pins the build command, output
-   directory, and immutable caching for hashed assets.
+**Live:** https://climblog-web.vercel.app
+**Repo:** https://github.com/nicksteffen/climblog-web (public)
+
+The project is linked to Vercel's Git integration, so **pushing to `main`
+deploys to production automatically** — no manual step needed.
+
+To deploy manually:
+
+```bash
+vercel --prod
+```
+
+Framework preset **Astro** is auto-detected. `vercel.json` pins the build
+command, output directory, and immutable caching for hashed assets.
 
 No environment variables and no serverless functions are required — the output
 is fully static.
+
+### If a custom domain is added
+
+Update `site` in `astro.config.mjs` to match, otherwise canonical tags and
+social preview URLs will point at the wrong host:
+
+```js
+site: 'https://climblog-web.vercel.app',  // or your domain
+```
 
 ## Editing content
 
@@ -33,7 +51,7 @@ Almost all copy and links live in **`src/data/site.ts`**:
 | Field | Purpose |
 |---|---|
 | `downloadUrl` | The beta download link (see below) |
-| `downloadReady` | `false` renders a "get notified" form; `true` renders the download button |
+| `downloadReady` | `false` renders a "beta coming soon" note; `true` renders the download button |
 | `features` | The three-step "how it works" cards |
 | `screens` | Gallery items (image import + alt text + caption) |
 | `highlights` | The three hero stats |
@@ -60,14 +78,14 @@ downloadUrl: 'https://expo.dev/accounts/<you>/projects/climblog/builds/<id>',
 downloadReady: true,
 ```
 
-Until then the page shows the "get notified" state.
+Until then the page reads "the beta is on the way".
 
 ### Why not Vercel Blob?
 
 Hosting a raw `.ipa`/`.apk` in blob storage and gating it behind a link does not
 work well on iOS — installing requires an OTA manifest and valid provisioning,
-not just a download. EAS already solves this. If you later want an email-gated
-reveal, keep the gate on the site but have it hand out the **EAS URL**.
+not just a download. EAS already solves this. If you later want the reveal gated,
+keep the gate on the site but have it hand out the **EAS URL**.
 
 ## Refreshing the screenshots
 
