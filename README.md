@@ -83,7 +83,6 @@ bash .screenshot-kit/capture.sh          # writes ./screenshots/*.png
 cd /path/to/climblog-web
 cp /path/to/climblog/screenshots/02-logbook.png       src/assets/shots/
 cp /path/to/climblog/screenshots/03-route-detail.png  src/assets/shots/
-cp /path/to/climblog/screenshots/04-sketch-beta.png   src/assets/shots/
 cp /path/to/climblog/screenshots/06-lab-volume.png    src/assets/shots/
 cp /path/to/climblog/screenshots/07-lab-efficiency.png src/assets/shots/
 cp /path/to/climblog/screenshots/08-community.png     src/assets/shots/
@@ -94,13 +93,17 @@ Images are imported from `src/data/site.ts`, which lets Astro emit responsive
 WebP variants. The source PNGs are ~2.8 MB each; the built WebP versions are
 8–60 KB.
 
+The logbook and route-detail shots show real wall photos. Those come from files
+placed in the simulator's app container — see the "Route photos" section of
+`screenshots/PLAN.md` in the app repo. If the photos are missing, both shots fall
+back to a sage-green SVG placeholder, which is easy to spot when reviewing.
+
 ### Known gaps in the current screenshot set
 
-- **`04-sketch-beta.png`** was verified only by its header text. The drawing
-  toolbar is rendered by Skia with no accessibility nodes, so it could not be
-  confirmed programmatically. **Eyeball this one.**
 - **Not yet captured:** the sign-in screen, the Quick Log sheet, and Profile.
   Add them here once captured, with `alt` text and a caption.
-- Route cards fall back to the `SentinelRock` SVG placeholder because the seed
-  data has no real wall photos. This is on-brand, but confirm you are happy with
-  it before a public launch.
+- **Sketch Beta is not in the gallery.** The screen works, but its drawing
+  toolbar is rendered by Skia with no accessibility nodes or OCR text, so the
+  capture could not be verified programmatically. The landing copy still
+  advertises sketching (it is a real feature), so add a screenshot here once one
+  can be confirmed by eye.
