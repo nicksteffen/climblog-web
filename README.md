@@ -35,6 +35,18 @@ command, output directory, and immutable caching for hashed assets.
 No environment variables and no serverless functions are required — the output
 is fully static.
 
+### Web Analytics
+
+Vercel Web Analytics is enabled on the project and rendered by the
+`<Analytics />` component in `src/layouts/Base.astro`. There is no extra
+configuration, but note that the dashboard must have Analytics **enabled** for
+the project (`vercel project web-analytics enable climblog-web`) — otherwise the
+component loads and silently sends nothing.
+
+Data appears in **Vercel → Project → Analytics** a few minutes after traffic
+arrives. It only records production traffic, so `npm run dev` produces no
+events.
+
 ### If a custom domain is added
 
 Update `site` in `astro.config.mjs` to match, otherwise canonical tags and

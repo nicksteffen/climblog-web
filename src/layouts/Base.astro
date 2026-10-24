@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -44,6 +45,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://vertx.app')
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Vercel Web Analytics. Requires Analytics to be enabled for the
+         project in the Vercel dashboard; the script is a no-op until then. -->
+    <Analytics />
   </head>
 
   <body>
